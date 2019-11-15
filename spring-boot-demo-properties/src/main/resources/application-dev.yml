@@ -6,3 +6,10 @@ developer:
   website: dev环境 http://xkcoding.com
   qq: dev环境 237497819
   phone-number: dev环境 17326075631
+description:
+  name: 描述说明
+  intro: 测试spring-boot获取配置文件
+  test-diff: 测试区别
+
+
+
