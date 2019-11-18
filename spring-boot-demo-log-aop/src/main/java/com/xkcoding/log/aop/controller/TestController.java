@@ -31,5 +31,4 @@ public class TestController {
 	public Dict test(String who) {
 		return Dict.create().set("who", StrUtil.isBlank(who) ? "me" : who);
 	}
-
 }
