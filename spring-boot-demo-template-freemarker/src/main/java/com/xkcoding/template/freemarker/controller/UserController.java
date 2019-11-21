@@ -3,6 +3,7 @@ package com.xkcoding.template.freemarker.controller;
 import com.xkcoding.template.freemarker.model.User;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
+import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -31,12 +32,20 @@ public class UserController {
 	public ModelAndView login(User user, HttpServletRequest request) {
 		ModelAndView mv = new ModelAndView();
 
-		mv.addObject(user);
-		mv.setViewName("redirect:/");
+		log.info("获取的值：{}",user.getName() );
 
-		request.getSession().setAttribute("user", user);
-		return mv;
-	}
+		if(StringUtils.isEmpty(user.getName())){
+		  mv.setViewName("page/login");
+    }else{
+      mv.addObject(user);
+      mv.setViewName("redirect:/");
+
+      request.getSession().setAttribute("user", user);
+    }
+
+    return mv;
+
+  }
 
 	@GetMapping("/login")
 	public ModelAndView login() {
